@@ -1,2 +1,9 @@
-# Algorithm-Study
-하루 1~2 문제 풀기
+# 📌Algorithm-Study
+***
+## 🔎 Commit Message Convention
+### `Date : Option : review`
+`Date`: YY-MM-DD\
+`Option` : 정답 참조 유무🔎, 못푼 문제❌\
+
+
+
