@@ -9,8 +9,11 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             int[] alph = new int[26];
-            char[] word1 = br.readLine().toCharArray();
-            char[] word2 = br.readLine().toCharArray();
+            String input = br.readLine();
+            String[] words = input.split(" ");
+            char[] word1 = words[0].toCharArray();
+            char[] word2 = words[1].toCharArray();
+
             for (char ch : word1) alph[ch - 97]++;
             for (char ch : word2) alph[ch - 97]--;
             boolean flag = true;
