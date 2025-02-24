@@ -12,11 +12,7 @@ public class Main {
 
         N = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(st.nextToken());
-        System.out.println("N = " + N);
-        System.out.println("K = " + K);
 
-        int[] S = new int[N];// 성별 0(여자) 1(남자)
-        int[] Y = new int[N];// 학년 (1~6)
         int[][] student = new int [2][7]; // 성별, 학년
         int room = 0;
 
