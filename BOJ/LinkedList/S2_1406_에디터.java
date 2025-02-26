@@ -5,53 +5,51 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        String str = st.nextToken();
+        String str = br.readLine();
         int N = Integer.parseInt(br.readLine());
 
-        LinkedList<Character> charArr = new LinkedList<Character>();
+        Stack<Character> leftStack = new Stack<>();
+        Stack<Character> rightStack = new Stack<>();
 
-        for (Character c : str.toCharArray()) {
-            charArr.add(c);
+
+
+        for (char c : str.toCharArray()) {
+            leftStack.push(c);
         }
-
-//        System.out.println("charArr = " + charArr);
-
-        int index = charArr.size();
-//        System.out.println("처음index = " + index);
 
         for (int i = 0; i < N; i++) {
-            String input = br.readLine();
-            if (input.charAt(0) == 'P'){
-//                System.out.println("index = " + index);
-                charArr.add(index, input.charAt(2));
-                index++;
-//                System.out.println(charArr);
-            } else if (input.charAt(0) == 'L') {
-                if(index > 0) {
-                    index--;
-//                    System.out.println("index = " + index);
+            String command = br.readLine();
+            char op = command.charAt(0);
+            if (op == 'L') {
+                if (!leftStack.isEmpty()) {
+                    rightStack.push(leftStack.pop());
                 }
-            } else if (input.charAt(0) == 'D') {
-                if (index < charArr.size()) {
-                    index++;
-//                    System.out.println("index = " + index);
-                }
-            } else if (input.charAt(0) == 'B') {
-                if(index > 0) {
-                    charArr.remove(index-1);
-                    index--;
-//                    System.out.println("charArr = " + charArr);
+            } else if (op == 'D') {
+                if (!rightStack.isEmpty()) {
+                    leftStack.push(rightStack.pop());
                 }
 
+            } else if (op == 'B') {
+                if (!leftStack.isEmpty()) {
+                    leftStack.pop();
+                }
+            } else if (op == 'P') {
+                leftStack.push(command.charAt(2));
             }
         }
-        StringBuilder sb = new StringBuilder();
-        for (Character c : charArr) {
-            sb.append(c);
+
+
+        while (!leftStack.isEmpty()) {
+            rightStack.push(leftStack.pop());
         }
+
+        StringBuilder sb = new StringBuilder();
+        while (!rightStack.isEmpty()) {
+            sb.append(rightStack.pop());
+        }
+
         System.out.println(sb.toString());
+
     }
 }
 
