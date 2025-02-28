@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+// LinkedList로 풀었으나, 큐 풀이도 나중에 해볼면 좋을듯??
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
